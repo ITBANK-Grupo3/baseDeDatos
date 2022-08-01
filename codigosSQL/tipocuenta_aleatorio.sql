@@ -1,4 +1,3 @@
-
 UPDATE cuenta SET tipo_cuenta = 2 WHERE account_id = 1;
 UPDATE cuenta SET tipo_cuenta = 1 WHERE account_id = 2;
 UPDATE cuenta SET tipo_cuenta = 1 WHERE account_id = 3;

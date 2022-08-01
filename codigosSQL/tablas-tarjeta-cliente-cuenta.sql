@@ -50,4 +50,5 @@ CREATE TABLE IF NOT EXISTS tarjeta(
 	FOREIGN KEY(marca_tarjeta_id) REFERENCES marca_tarjeta(marca_tarjeta_id)
 );
 
-ALTER TABLE cuenta ADD COLUMN tipo_cuenta INTEGER 
+ALTER TABLE cuenta ADD COLUMN tipo_cuenta INTEGER NOT NULL
+ 

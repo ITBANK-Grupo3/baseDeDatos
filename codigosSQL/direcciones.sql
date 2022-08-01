@@ -1,4 +1,4 @@
-CREATE TABLE correspondencia_direcciones(
+CREATE TABLE IF NOT EXISTS correspondencia_direcciones(
 	correspondencia_id INTEGER PRIMARY KEY AUTOINCREMENT,
 	tipo TEXT NOT NULL);
 INSERT INTO correspondencia_direcciones(tipo)
@@ -8,7 +8,7 @@ VALUES
 ('sucursal');
 
 --creacion tabla direcciones
-CREATE TABLE direcciones(
+CREATE TABLE IF NOT EXISTS direcciones(
 	dire_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 	correspondencia_id INTEGER NOT NULL,
 	titular_id INTEGER NOT NULL,
