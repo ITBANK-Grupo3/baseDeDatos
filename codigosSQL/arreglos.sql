@@ -15,3 +15,5 @@ WHERE customer_id IN (
 DELETE cliente 
 WHERE  customer_name='David' AND customer_surname='Noel';
 
+
+
