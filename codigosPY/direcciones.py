@@ -1,3 +1,4 @@
+#Insertar 500 direcciones, asignando del lote inicial a empleados, clientes o sucursal de forma aleatoria
 from faker import Faker
 import sqlite3 as sql
 import re

@@ -1,3 +1,4 @@
+#  Insertar 5 nuevos clientes en la base de datos
 import json as js
 import sqlite3 as sql
 from datetime import datetime

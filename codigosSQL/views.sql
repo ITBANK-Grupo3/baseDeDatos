@@ -1,4 +1,4 @@
--- Vista cliente-edad
+-- Vista con las columnas id, numero sucursal, nombre, apellido, DNI y edad
 CREATE VIEW clientes_edad AS
 SELECT 
 	customer_id,
@@ -21,7 +21,7 @@ FROM cliente
 WHERE CURRENT_DATE - strftime(dob)>= 40
 ORDER BY CAST(customer_DNI as INT)
 
--- Vista ANNE y TYLER 
+-- Mostrar todos los clientes que se llaman “Anne” o “Tyler” ordenados por edad de menor a mayor 
 CREATE VIEW Anne_y_Tyler AS	
 SELECT 
 	customer_id,

@@ -4,11 +4,16 @@ WHERE loan_total = (
     SELECT MAX(CAST(loan_total as INT)) FROM prestamo
     );
 
+-- Seleccionar las cuentas con saldo negativo
+SELECT *
+FROM cuenta
+WHERE balance<0
+
 -- Seleccionar el nombre, apellido y edad de los clientes que tengan en el apellido la letra Z
 SELECT 
     customer_name,
     customer_surname,
-    CURRENT_DATE - strftime(dob) as edad
+    CURRENT_DATE - strftime(dob) AS edad
 FROM cliente 
 WHERE customer_surname LIKE '%z%';
 
@@ -16,16 +21,64 @@ WHERE customer_surname LIKE '%z%';
 SELECT 
     customer_name,
     customer_surname,
-    CURRENT_DATE - strftime(dob) as Edad,
-    branch_name as Sucursal
+    CURRENT_DATE - strftime(dob) AS Edad,
+    branch_name AS Sucursal
 FROM sucursal
 INNER JOIN cliente ON sucursal.branch_id=cliente.branch_id
 WHERE customer_name='Brendan'
 ORDER BY branch_name
 
+--Seleccionar de la tabla de préstamos, los préstamos con un importe mayor a $80.000 y los préstamos prendarios utilizando la unión de tablas/consultas (recordar que en las bases de datos la moneda se guarda como integer, en este caso con 2 centavos)
+SELECT *
+FROM prestamo
+WHERE loan_total>8000000 AND loan_type="PRENDARIO"
+
+-- Seleccionar los prestamos cuyo importe sea mayor que el importe medio de todos los prestamos
+
+
 -- Contar la cantidad de clientes menores a 50 años
-SELECT COUNT(*) as Menores_de_50_años FROM cliente
+SELECT COUNT(*) AS Menores_de_50_años FROM cliente
 WHERE CURRENT_DATE - strftime(dob) < 50
 
+-- Seleccionar las primeras 5 cuentas con saldo mayor a 8.000$
+SELECT * FROM cuenta
+WHERE balance >=8000 
+ORDER BY balance ASC
+LIMIT 5
 
+-- Seleccionar los préstamos que tengan fecha en abril, junio y agosto, ordenándolos por importe
+SELECT *
+FROM prestamo 
+WHERE loan_date LIKE '-04-' OR '-06-' OR '08' 
+ORDER BY loan_total DESC
+
+-- Obtener el importe total de los prestamos agrupados por tipo de préstamos. Por cada tipo de préstamo de la tabla préstamo, calcular la suma de susimportes. Renombrar la columna como loan_total_accu
+SELECT loan_type, 
+sum(loan_total) loan_total_accu
+FROM prestamo
+WHERE loan_type IN ("HIPOTECARIO","PERSONAL","PRENDARIO")
+GROUP BY loan_type
+
+-- Listar la cantidad de clientes por nombre de sucursal ordenando de mayor a menor
+SELECT branch_id, count(*) FROM usuarios 
+    GROUP BY telefono
+    HAVING COUNT(*)>1;
+
+-- Obtener la cantidad de empleados por cliente por sucursal en un número real
+
+-- Obtener la cantidad de tarjetas de crédito por tipo por sucursal
+
+-- Obtener el promedio de créditos otorgado por sucursal
+-- Cheques otorgado por sucursal
+SELECT cliente.branch_id sucursal,
+COUNT(cliente.branch_id) creditos_otorgados
+FROM prestamo, cliente
+WHERE prestamo.customer_id = cliente.customer_id
+GROUP by branch_id
+
+-- La información de las cuentas resulta critica para la compañía, por eso es necesario crear una tabla denominada “auditoria_cuenta” para guardar los datos movimientos, con los siguientes campos: old_id, new_id, old_balance, new_balance, old_iban, new_iban, old_type, new_type, user_action, created_at 
+
+-- Mediante índices mejorar la performance la búsqueda de clientes por DNI
+
+-- Crear la tabla “movimientos” con los campos de identificación del movimiento, número de cuenta, monto, tipo de operación y hora
 
