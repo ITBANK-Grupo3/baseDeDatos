@@ -16,6 +16,7 @@ DELETE cliente
 WHERE  customer_name='David' AND customer_surname='Noel';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 -- Seleccionar las primeras 5 cuentas con saldo mayor a 8.000$
 
@@ -43,5 +44,7 @@ where prestamo.customer_id = cliente.customer_id
 
 
 GROUP by branch_id
+=======
+>>>>>>> 4ad1d4ff556df23e7b7d2431fef0a65a4c252c63
 =======
 >>>>>>> 4ad1d4ff556df23e7b7d2431fef0a65a4c252c63
