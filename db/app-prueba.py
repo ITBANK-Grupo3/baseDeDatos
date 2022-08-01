@@ -27,7 +27,7 @@ def id_sucursales():
     instruccion=f"SELECT * FROM id_sucursales"
     cursor.execute(instruccion)
     datos= cursor.fetchall()
-    datos= re.sub("\(|\)|\,|\[","",str(datos)).split(' ')
+    datos= re.sub("\(|\)|\,|\[|\]","",str(datos)).split(' ')
     conn.close
     return datos
 print(id_sucursales()[0])
@@ -37,7 +37,7 @@ def id_empleados():
     instruccion=f"SELECT * FROM id_empleados"
     cursor.execute(instruccion)
     datos= cursor.fetchall()
-    datos= re.sub("\(|\)|\,||\[","",str(datos)).split(' ')
+    datos= re.sub("\(|\)|\,|\[|\]","",str(datos)).split(' ')
     conn.close
     return datos
 
@@ -47,7 +47,7 @@ def id_clientes():
     instruccion=f"SELECT * FROM id_clientes"
     cursor.execute(instruccion)
     datos= cursor.fetchall()
-    datos= re.sub("\(|\)|\,||\[","",str(datos)).split(' ')
+    datos= re.sub("\(|\)|\,||\[|\]","",str(datos)).split(' ')
     conn.close
     return datos
 
