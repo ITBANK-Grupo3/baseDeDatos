@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS tarjeta(
 	FOREIGN KEY(marca_tarjeta_id) REFERENCES marca_tarjeta(marca_tarjeta_id)
 );
 
-ALTER TABLE cuenta ADD COLUMN tipo_cuenta INTEGER NOT NULL
+ALTER TABLE cuenta ADD COLUMN tipo_cuenta INTEGER NOT NULL;
  
 SELECT CONVERT(VARCHAR, GETDATE(), 111) AS [YYYY/MM/DD]
-FROM employee_hire_date
+FROM employee_hire_date;
