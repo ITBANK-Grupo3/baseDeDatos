@@ -24,6 +24,19 @@ VALUES
 	('Cuenta corriente en dolares'),
 	('Cuenta inversion');
 
+CREATE TABLE IF NOT EXISTS auditoria_cuenta (
+	old_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
+	new_id INTEGER NOT NULL
+	old_balance INTEGER NOT NULL
+	new_balance INTEGER NOT NULL
+	old_iban INTEGER NOT NULL
+	new_iban INTEGER NOT NULL
+	old_type TEXT VARCHAR(30) NOT NULL
+	new_type TEXT VARCHAR(30) NOT NULL
+	user_action TEXT VARCHAR(30) NOT NULL
+	created_at TEXT NOT NULL
+);
+
 --marca tarjeta
 CREATE TABLE IF NOT EXISTS marca_tarjeta(
 	marca_tarjeta_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
