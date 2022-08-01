@@ -2,8 +2,7 @@
 ALTER TABLE cuenta ADD COLUMN tipo_cuenta INTEGER NOT NULL;
 
 -- Corregir el campo employee_hire_date de la tabla empleado con la fecha en formato YYYY-MM-DD
-SELECT CONVERT(VARCHAR, GETDATE(), 111) AS [YYYY/MM/DD]
-FROM employee_hire_date;
+UPDATE empleado SET employee_hire_date = substr(employee_hire_date, 7, 4) || '-' || substr(employee_hire_date, 4,2) || '-' || substr(employee_hire_date, 1,2)
 
 -- Error de sucursal clientes nuevos
 UPDATE cliente SET branch_id=10 
@@ -15,5 +14,4 @@ WHERE customer_id IN (
 -- Eliminar a Noel David
 DELETE cliente 
 WHERE  customer_name='David' AND customer_surname='Noel';
-
 
