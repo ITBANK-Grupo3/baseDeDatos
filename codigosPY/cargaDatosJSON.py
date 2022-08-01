@@ -16,10 +16,6 @@ def insertJSON():
 
 
 insertJSON()
-def ggg():
-    dateString = "31/12/2013"
-    dateFormatter = "%d/%m/%Y"
-    return datetime.strptime(dateString, dateFormatter)
-# print(ggg())
+
 
 
