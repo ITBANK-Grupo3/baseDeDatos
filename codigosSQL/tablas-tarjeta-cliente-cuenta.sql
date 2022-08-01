@@ -90,3 +90,7 @@ ORDER BY (CURRENT_DATE - strftime( dob))
 SELECT *
 FROM cuenta
 WHERE balance<0
+
+SELECT *
+FROM prestamo
+WHERE loan_total>8000000 AND loan_type="PRENDARIO"
