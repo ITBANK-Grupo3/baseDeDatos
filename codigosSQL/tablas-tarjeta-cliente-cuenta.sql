@@ -94,3 +94,8 @@ WHERE balance<0
 SELECT *
 FROM prestamo
 WHERE loan_total>8000000 AND loan_type="PRENDARIO"
+
+SELECT *
+FROM prestamo 
+WHERE loan_date LIKE '-04-' OR '-06-' OR '08' 
+ORDER BY loan_total DESC
