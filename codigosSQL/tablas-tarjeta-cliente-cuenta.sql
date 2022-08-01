@@ -52,9 +52,8 @@ CREATE TABLE IF NOT EXISTS tarjeta(
 
 ALTER TABLE cuenta ADD COLUMN tipo_cuenta INTEGER NOT NULL;
  
- /*cambio formato fecha (arreglar)*/
-SELECT CONVERT(VARCHAR, GETDATE(), 111) AS [YYYY/MM/DD]
-FROM employee_hire_date;
+SELECT CONVERT(VARCHAR, GETDATE(), 111) AS [YYYY/MM/DD],
+FROM empleado;
 
 /* vista cliente-edad */
 
