@@ -87,6 +87,6 @@ WHERE customer_name = "Tyler" or customer_name = "Anne"
 
 ORDER BY (CURRENT_DATE - strftime( dob))
 
-SELECT account_id,
-FROM cuenta,
-WHERE balance<0;
+SELECT *
+FROM cuenta
+WHERE balance<0
