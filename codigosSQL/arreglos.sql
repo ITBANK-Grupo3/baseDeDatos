@@ -15,5 +15,29 @@ WHERE customer_id IN (
 DELETE cliente 
 WHERE  customer_name='David' AND customer_surname='Noel';
 
+-- Seleccionar las primeras 5 cuentas con saldo mayor a 8.000$
+
+SELECT * from cuenta
+WHERE balance >=8000 
+ORDER by balance ASC
+LIMIT 5
+
+-- Obtener el importe total de los prestamos agrupados por tipo de préstamos. Por cada tipo de préstamo de la tabla préstamo, calcular la suma de susimportes. Renombrar la columna como loan_total_accu
+SELECT loan_type, 
+sum(loan_total) loan_total_accu
+
+from prestamo
+where loan_type in ("HIPOTECARIO","PERSONAL","PRENDARIO")
+GROUP BY loan_type
 
 
+-- Cheques otorgado por sucursal
+
+SELECT cliente.branch_id sucursal,
+count(cliente.branch_id) creditos_otorgados
+
+FROM prestamo, cliente
+where prestamo.customer_id = cliente.customer_id  
+
+
+GROUP by branch_id
