@@ -16,3 +16,16 @@ SELECT customer_name, customer_surname, customer_DNI
 FROM cliente
 WHERE CURRENT_DATE - strftime(dob)>= 40
 ORDER BY CAST(customer_DNI as INT)
+
+/* vista ANNE y TYLeR */
+CREATE VIEW Anne_y_Tyler AS	
+SELECT 
+	customer_id,
+	branch_id,
+	customer_name,
+	customer_surname,
+	customer_DNI,
+	CURRENT_DATE - strftime( dob) as edad
+FROM cliente
+WHERE customer_name = "Tyler" or customer_name = "Anne"
+ORDER BY (CURRENT_DATE - strftime( dob))
