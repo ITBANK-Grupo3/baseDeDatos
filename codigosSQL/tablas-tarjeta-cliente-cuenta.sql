@@ -54,3 +54,19 @@ ALTER TABLE cuenta ADD COLUMN tipo_cuenta INTEGER NOT NULL;
  
 SELECT CONVERT(VARCHAR, GETDATE(), 111) AS [YYYY/MM/DD]
 FROM employee_hire_date;
+
+/* vista cliente-edad */
+
+CREATE VIEW clientes_edad
+as
+
+SELECT 
+	customer_id,
+	branch_id,
+	customer_name,
+	customer_surname,
+	customer_DNI,
+	CURRENT_DATE - strftime( dob) as edad
+	
+FROM cliente
+	
