@@ -27,20 +27,16 @@ CREATE TABLE IF NOT EXISTS direcciones(
 
 CREATE VIEW total_sucursales AS
 SELECT count(DISTINCT branch_address_id) as 'total_suc' 
-from sucursal
+from sucursal;
 
 CREATE VIEW id_sucursales as 
 SELECT DISTINCT branch_address_id
-FROM sucursal
+FROM sucursal;
 
 CREATE VIEW id_empleados AS
 SELECT employee_id 
-FROM empleado
+FROM empleado;
 
 CREATE VIEW id_clientes AS
 SELECT customer_id
-FROM cliente
-
-
-
-
+FROM cliente;
