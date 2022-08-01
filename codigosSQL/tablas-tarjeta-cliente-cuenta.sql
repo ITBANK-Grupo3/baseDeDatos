@@ -24,6 +24,19 @@ VALUES
 	('Cuenta corriente en dolares'),
 	('Cuenta inversion');
 
+CREATE TABLE IF NOT EXISTS auditoria_cuenta (
+	old_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
+	new_id INTEGER NOT NULL
+	old_balance INTEGER NOT NULL
+	new_balance INTEGER NOT NULL
+	old_iban INTEGER NOT NULL
+	new_iban INTEGER NOT NULL
+	old_type TEXT VARCHAR(30) NOT NULL
+	new_type TEXT VARCHAR(30) NOT NULL
+	user_action TEXT VARCHAR(30) NOT NULL
+	created_at TEXT NOT NULL
+);
+
 --marca tarjeta
 CREATE TABLE IF NOT EXISTS marca_tarjeta(
 	marca_tarjeta_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -86,3 +99,16 @@ FROM cliente
 WHERE customer_name = "Tyler" or customer_name = "Anne"
 
 ORDER BY (CURRENT_DATE - strftime( dob))
+
+SELECT *
+FROM cuenta
+WHERE balance<0
+
+SELECT *
+FROM prestamo
+WHERE loan_total>8000000 AND loan_type="PRENDARIO"
+
+SELECT *
+FROM prestamo 
+WHERE loan_date LIKE '-04-' OR '-06-' OR '08' 
+ORDER BY loan_total DESC

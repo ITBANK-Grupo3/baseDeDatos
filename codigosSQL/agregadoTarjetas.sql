@@ -1,3 +1,4 @@
+-- Crea 500 tarjetas aleatorias y las inserta a la tabla tarjetas
 INSERT INTO tarjeta(
   numero_tarjeta,
   cvv, 

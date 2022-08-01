@@ -7,7 +7,7 @@ VALUES
 ('empleado'),
 ('sucursal');
 
---creacion tabla direcciones
+-- Creacion tabla direcciones
 CREATE TABLE IF NOT EXISTS direcciones(
 	dire_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 	correspondencia_id INTEGER NOT NULL,
