@@ -16,7 +16,7 @@ SELECT
 	branch_id,
 	customer_name,
 	customer_surname,
-	customer_DNI,
+	customer_DNI
 FROM cliente
 WHERE CURRENT_DATE - strftime(dob)>= 40
 ORDER BY CAST(customer_DNI as INT)

@@ -33,8 +33,7 @@ INNER JOIN cliente ON sucursal.branch_id=cliente.branch_id
 WHERE customer_name='Brendan'
 ORDER BY branch_name
 
---Seleccionar de la tabla de préstamos, los préstamos con un importe mayor a $80.000 y los préstamos prendarios utilizando la unión de tablas/consultas (recordar que en las bases de datos la moneda se guarda como integer, en este caso con 2 centavos)
--- falta
+--Seleccionar de la tabla de préstamos, los préstamos con un importe mayor a $80.000 y los préstamos prendarios
 SELECT *
 FROM prestamo
 WHERE loan_total>8000000 AND loan_type="PRENDARIO"
@@ -44,7 +43,7 @@ SELECT *
 FROM prestamo
 WHERE loan_total > (
     SELECT 
-        Sum(loan_total)/Count(*) AS loan_media
+        AVG(loan_total)
     FROM prestamo
     )
 
@@ -73,7 +72,7 @@ ORDER BY loan_total DESC
 -- Obtener el importe total de los prestamos agrupados por tipo de préstamos. Por cada tipo de préstamo de la tabla préstamo, calcular la suma de susimportes. Renombrar la columna como loan_total_accu
 SELECT 
     loan_type, 
-    sum(loan_total) loan_total_accu
+    SUM(loan_total) loan_total_accu
 FROM prestamo
 WHERE loan_type IN ("HIPOTECARIO","PERSONAL","PRENDARIO")
 GROUP BY loan_type
@@ -88,12 +87,22 @@ GROUP BY branch_name
 ORDER BY clientes DESC
 
 -- Obtener la cantidad de empleados por cliente por sucursal en un número real
+-- REVISAR
+SELECT
+    COUNT(*) empleados,
+    branch_name,
+    customer_name,
+    customer_surname
+FROM empleado
+INNER JOIN cliente ON sucursal.branch_id=cliente.branch_id
+INNER JOIN sucursal ON empleado.branch_id=sucursal.branch_id
+GROUP BY branch_name,customer_name
 
 -- Obtener la cantidad de tarjetas de crédito por tipo por sucursal
 
 -- Obtener el promedio de créditos otorgado por sucursal
 SELECT
-    AVG(loan_total) as prom_loan,
+    AVG(loan_total) AS prom_loan,
     branch_name
 FROM prestamo
 INNER JOIN cliente ON prestamo.customer_id=cliente.customer_id
@@ -101,7 +110,7 @@ INNER JOIN sucursal ON sucursal.branch_id=cliente.branch_id
 GROUP BY branch_name
 
 -- Cheques otorgados por sucursal
-SELECT 
+SELECT
     COUNT(*) cheques_otorgados,
     branch_name
 FROM prestamo

@@ -24,7 +24,6 @@ CREATE TABLE IF NOT EXISTS direcciones(
 	);
 
 
-
 CREATE VIEW IF NOT EXISTS total_sucursales AS
 SELECT count(DISTINCT branch_address_id) as 'total_suc' 
 from sucursal;
