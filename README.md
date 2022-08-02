@@ -1,3 +1,8 @@
+Falta de la Problematica 4 ultimos 3 puntos + 
+-- Obtener la cantidad de tarjetas de crédito por tipo por sucursal
+
+
+
 ## Problematica 1
 - Relacionar las tarjetas con la tabla donde se guardan las marcas de tarjeta
 - Relacionar las tarjetas con el cliente al que pertenecen
