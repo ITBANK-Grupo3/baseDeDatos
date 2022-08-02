@@ -43,36 +43,46 @@ WHERE loan_total > (
     )
 
 -- Contar la cantidad de clientes menores a 50 años
-SELECT COUNT(*) AS Menores_de_50_años FROM cliente
+SELECT COUNT(*) AS Menores_de_50_años 
+FROM cliente
 WHERE CURRENT_DATE - strftime(dob) < 50
 
 -- Seleccionar las primeras 5 cuentas con saldo mayor a 8.000$
 SELECT * FROM cuenta
 WHERE balance >=8000 
-ORDER BY balance ASC
+ORDER BY balance
 LIMIT 5
 
 -- Seleccionar los préstamos que tengan fecha en abril, junio y agosto, ordenándolos por importe
 SELECT *
 FROM prestamo 
-WHERE loan_date LIKE '-04-' OR '-06-' OR '08' 
+WHERE 
+    loan_date LIKE '%-04-%' 
+    OR loan_date LIKE '%-06-%' 
+    OR loan_date LIKE '%-08-%' 
 ORDER BY loan_total DESC
 
 -- Obtener el importe total de los prestamos agrupados por tipo de préstamos. Por cada tipo de préstamo de la tabla préstamo, calcular la suma de susimportes. Renombrar la columna como loan_total_accu
-SELECT loan_type, 
-sum(loan_total) loan_total_accu
+SELECT 
+    loan_type, 
+    sum(loan_total) loan_total_accu
 FROM prestamo
 WHERE loan_type IN ("HIPOTECARIO","PERSONAL","PRENDARIO")
 GROUP BY loan_type
 
 -- Listar la cantidad de clientes por nombre de sucursal ordenando de mayor a menor
-
+SELECT COUNT(*) clientes,branch_name
+FROM cliente
+INNER JOIN sucursal ON cliente.branch_id = sucursal.branch_id 
+GROUP BY branch_name
+ORDER BY clientes DESC
 
 -- Obtener la cantidad de empleados por cliente por sucursal en un número real
 
 -- Obtener la cantidad de tarjetas de crédito por tipo por sucursal
 
 -- Obtener el promedio de créditos otorgado por sucursal
+
 -- Cheques otorgado por sucursal
 SELECT cliente.branch_id sucursal,
 COUNT(cliente.branch_id) creditos_otorgados
