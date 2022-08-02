@@ -92,8 +92,15 @@ ORDER BY clientes DESC
 -- Obtener la cantidad de tarjetas de crédito por tipo por sucursal
 
 -- Obtener el promedio de créditos otorgado por sucursal
+SELECT
+    AVG(loan_total) as prom_loan,
+    branch_name
+FROM prestamo
+INNER JOIN cliente ON prestamo.customer_id=cliente.customer_id
+INNER JOIN sucursal ON sucursal.branch_id=cliente.branch_id
+GROUP BY branch_name
 
--- Cheques otorgado por sucursal
+-- Cheques otorgados por sucursal
 SELECT 
     COUNT(*) cheques_otorgados,
     branch_name
