@@ -1,7 +1,12 @@
 -- Consultar sobre cuál es el tipo de préstamo de mayor importe
-SELECT loan_type,loan_totaL FROM prestamo 
+SELECT 
+    loan_type,
+    loan_totaL 
+FROM prestamo 
 WHERE loan_total = (
-    SELECT MAX(CAST(loan_total as INT)) FROM prestamo
+    SELECT 
+        MAX(CAST(loan_total as INT)) 
+    FROM prestamo
     );
 
 -- Seleccionar las cuentas con saldo negativo
@@ -38,17 +43,20 @@ WHERE loan_total>8000000 AND loan_type="PRENDARIO"
 SELECT *
 FROM prestamo
 WHERE loan_total > (
-    SELECT Sum(loan_total)/Count(*) AS loan_media
+    SELECT 
+        Sum(loan_total)/Count(*) AS loan_media
     FROM prestamo
     )
 
 -- Contar la cantidad de clientes menores a 50 años
-SELECT COUNT(*) AS Menores_de_50_años 
+SELECT 
+    COUNT(*) AS Menores_de_50_años 
 FROM cliente
 WHERE CURRENT_DATE - strftime(dob) < 50
 
 -- Seleccionar las primeras 5 cuentas con saldo mayor a 8.000$
-SELECT * FROM cuenta
+SELECT * 
+FROM cuenta
 WHERE balance >=8000 
 ORDER BY balance
 LIMIT 5
@@ -71,7 +79,9 @@ WHERE loan_type IN ("HIPOTECARIO","PERSONAL","PRENDARIO")
 GROUP BY loan_type
 
 -- Listar la cantidad de clientes por nombre de sucursal ordenando de mayor a menor
-SELECT COUNT(*) clientes,branch_name
+SELECT 
+    COUNT(*) clientes,
+    branch_name
 FROM cliente
 INNER JOIN sucursal ON cliente.branch_id = sucursal.branch_id 
 GROUP BY branch_name
@@ -84,11 +94,13 @@ ORDER BY clientes DESC
 -- Obtener el promedio de créditos otorgado por sucursal
 
 -- Cheques otorgado por sucursal
-SELECT cliente.branch_id sucursal,
-COUNT(cliente.branch_id) creditos_otorgados
-FROM prestamo, cliente
-WHERE prestamo.customer_id = cliente.customer_id
-GROUP by branch_id
+SELECT 
+    COUNT(*) cheques_otorgados,
+    branch_name
+FROM prestamo
+INNER JOIN cliente ON prestamo.customer_id=cliente.customer_id
+INNER JOIN sucursal ON sucursal.branch_id=cliente.branch_id
+GROUP BY branch_name
 
 -- La información de las cuentas resulta critica para la compañía, por eso es necesario crear una tabla denominada “auditoria_cuenta” para guardar los datos movimientos, con los siguientes campos: old_id, new_id, old_balance, new_balance, old_iban, new_iban, old_type, new_type, user_action, created_at 
 
