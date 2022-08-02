@@ -1,5 +1,5 @@
 -- Consultar sobre cuál es el tipo de préstamo de mayor importe
-SELECT * FROM prestamo 
+SELECT loan_type,loan_totaL FROM prestamo 
 WHERE loan_total = (
     SELECT MAX(CAST(loan_total as INT)) FROM prestamo
     );
@@ -29,12 +29,18 @@ WHERE customer_name='Brendan'
 ORDER BY branch_name
 
 --Seleccionar de la tabla de préstamos, los préstamos con un importe mayor a $80.000 y los préstamos prendarios utilizando la unión de tablas/consultas (recordar que en las bases de datos la moneda se guarda como integer, en este caso con 2 centavos)
+-- falta
 SELECT *
 FROM prestamo
 WHERE loan_total>8000000 AND loan_type="PRENDARIO"
 
 -- Seleccionar los prestamos cuyo importe sea mayor que el importe medio de todos los prestamos
-
+SELECT *
+FROM prestamo
+WHERE loan_total > (
+    SELECT Sum(loan_total)/Count(*) AS loan_media
+    FROM prestamo
+    )
 
 -- Contar la cantidad de clientes menores a 50 años
 SELECT COUNT(*) AS Menores_de_50_años FROM cliente
@@ -60,9 +66,7 @@ WHERE loan_type IN ("HIPOTECARIO","PERSONAL","PRENDARIO")
 GROUP BY loan_type
 
 -- Listar la cantidad de clientes por nombre de sucursal ordenando de mayor a menor
-SELECT branch_id, count(*) FROM usuarios 
-    GROUP BY telefono
-    HAVING COUNT(*)>1;
+
 
 -- Obtener la cantidad de empleados por cliente por sucursal en un número real
 
