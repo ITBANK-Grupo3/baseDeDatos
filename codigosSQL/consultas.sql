@@ -91,14 +91,21 @@ ORDER BY clientes DESC
 SELECT
     COUNT(*) empleados,
     branch_name,
-    customer_name,
-    customer_surname
+    customer_id
 FROM empleado
 INNER JOIN cliente ON sucursal.branch_id=cliente.branch_id
 INNER JOIN sucursal ON empleado.branch_id=sucursal.branch_id
 GROUP BY branch_name,customer_name
 
 -- Obtener la cantidad de tarjetas de crédito por tipo por sucursal
+SELECT
+    COUNT(*) tarjetas,
+    branch_name,
+    tipo_tarjeta
+FROM tarjeta
+INNER JOIN cliente ON tarjeta.cliente_id=cliente.customer_id
+INNER JOIN sucursal ON cliente.branch_id=sucursal.branch_id
+GROUP BY branch_name,tipo_tarjeta
 
 -- Obtener el promedio de créditos otorgado por sucursal
 SELECT
