@@ -10,7 +10,7 @@
 - Antes que nada se debe abrir la base de datos itbank.db
 - Para la creación de las tarjetas aleatorias y su agregado a la tabla tarjeta se debe ejecutar agregadoTarjetas.sql
 - Para asignar un tipo de cuenta a cada registro de cuenta de forma aleatoria se debe ejecutar tipocuenta_aleatorio.sql
-- Para crear la tabla de direcciones se debe ejecutar direcciones.sql y luego direcciones.py para insertarle las mismas. Para ejecutar direcciones.py se precisa tener instalado ????? (faker)
+- Para crear la tabla de direcciones se debe ejecutar direcciones.sql y luego direcciones.py para insertarle las mismas. Para ejecutar direcciones.py se precisa tener instalado el package Faker (en la consola GitBash ejecutar el comando "pip install Faker").
 - Para leer el archivo JSON dado y agregar los nuevos clientes a la tabla cliente, ejecutar cargaDatosJSON.py 
 
 <hr>
