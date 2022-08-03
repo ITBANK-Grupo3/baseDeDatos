@@ -1,5 +1,5 @@
 #Insertar 500 direcciones, asignando del lote inicial a empleados, clientes o sucursal de forma aleatoria
-from faker import Faker
+import json as js
 import sqlite3 as sql
 import re
 import random
@@ -53,18 +53,17 @@ def id_clientes():
     return datos
 
 def cargarDirecciones():
-    for i in range(20):
-        # fake = Faker()
-        # d = fake.address()
-        # p=fake.country()
-
+    f=open('JSON\data-direcciones.json', encoding="utf8")
+    data=js.load(f)
+    f.close()
+    for i in range(500):
         corr=int(random.choice("123"))
         print(i+1)
         if(i+1 < int(total_sucursales()) and corr == 3):
-            insertdireccion(corr,int(id_sucursales()[i]),'fitzroy',123,'caba','bsas','arg')
+            insertdireccion(corr,int(id_sucursales()[i]),data[i]['direccion'],data[i]['numero'],data[i]['ciudad'],str(data[i]['provincia']),data[i]['pais'])
         elif(corr==2):
-            insertdireccion(corr,int(id_empleados()[i]),'135 y 470',689,'lp','bsas','arg')
+            insertdireccion(corr,int(id_empleados()[i]),data[i]['direccion'],data[i]['numero'],data[i]['ciudad'],str(data[i]['provincia']),data[i]['pais'])
         elif(corr==1):
-            insertdireccion(corr,int(id_clientes()[i]),'lalal',98765,'HHH','la pampa','arg')
+            insertdireccion(corr,int(id_clientes()[i]),data[i]['direccion'],data[i]['numero'],data[i]['ciudad'],str(data[i]['provincia']),data[i]['pais'])
 
-cargarDirecciones()
+cargarDirecciones()#el posta
