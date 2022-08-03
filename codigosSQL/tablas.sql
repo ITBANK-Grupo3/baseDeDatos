@@ -49,14 +49,14 @@ CREATE TABLE IF NOT EXISTS tarjeta(
 
 -- Crear una tabla denominada “auditoria_cuenta” para guardar los datos movimientos
 CREATE TABLE IF NOT EXISTS auditoria_cuenta (
-	old_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
-	new_id INTEGER NOT NULL
-	old_balance INTEGER NOT NULL
-	new_balance INTEGER NOT NULL
-	old_iban INTEGER NOT NULL
-	new_iban INTEGER NOT NULL
-	old_type TEXT VARCHAR(30) NOT NULL
-	new_type TEXT VARCHAR(30) NOT NULL
-	user_action TEXT VARCHAR(30) NOT NULL
+	old_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	new_id INTEGER NOT NULL,
+	old_balance INTEGER NOT NULL,
+	new_balance INTEGER NOT NULL,
+	old_iban INTEGER NOT NULL,
+	new_iban INTEGER NOT NULL,
+	old_type TEXT VARCHAR(30) NOT NULL,
+	new_type TEXT VARCHAR(30) NOT NULL,
+	user_action TEXT VARCHAR(30) NOT NULL,
 	created_at TEXT NOT NULL
 );

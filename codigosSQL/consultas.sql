@@ -125,8 +125,6 @@ INNER JOIN cliente ON prestamo.customer_id=cliente.customer_id
 INNER JOIN sucursal ON sucursal.branch_id=cliente.branch_id
 GROUP BY branch_name
 
--- La información de las cuentas resulta critica para la compañía, por eso es necesario crear una tabla denominada “auditoria_cuenta” para guardar los datos movimientos, con los siguientes campos: old_id, new_id, old_balance, new_balance, old_iban, new_iban, old_type, new_type, user_action, created_at 
-
 -- Mediante índices mejorar la performance la búsqueda de clientes por DNI
 
 -- Crear la tabla “movimientos” con los campos de identificación del movimiento, número de cuenta, monto, tipo de operación y hora

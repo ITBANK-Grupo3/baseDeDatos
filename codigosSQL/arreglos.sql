@@ -14,3 +14,7 @@ WHERE customer_id IN (
 -- Eliminar a Noel David
 DELETE cliente 
 WHERE  customer_name='David' AND customer_surname='Noel';
+
+-- Restar $100 a las cuentas 10,11,12,13,14
+UPDATE cuenta SET balance = balance - 10000
+WHERE account_id IN (10,11,12,13,14)
