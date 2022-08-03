@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS auditoria_cuenta (
 	old_type TEXT VARCHAR(30) NOT NULL,
 	new_type TEXT VARCHAR(30) NOT NULL,
 	user_action TEXT VARCHAR(30) NOT NULL,
-	created_at TEXT NOT NULL
+	created_at DATE NOT NULL
 );
 
 -- Crear la tabla “movimientos” con los campos de identificación del movimiento, número de cuenta, monto, tipo de operación y hora

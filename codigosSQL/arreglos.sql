@@ -16,5 +16,8 @@ DELETE cliente
 WHERE  customer_name='David' AND customer_surname='Noel';
 
 -- Restar $100 a las cuentas 10,11,12,13,14
-UPDATE cuenta SET balance = balance - 10000
+UPDATE cuenta SET balance = balance - 100
 WHERE account_id IN (10,11,12,13,14)
+--yapa sumar 100 para ver la modificación en tabla cuenta_auditoria
+UPDATE cuenta SET balance = balance + 100
+WHERE account_id IN (18,19,22,23,24);
