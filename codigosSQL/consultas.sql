@@ -124,8 +124,3 @@ FROM prestamo
 INNER JOIN cliente ON prestamo.customer_id=cliente.customer_id
 INNER JOIN sucursal ON sucursal.branch_id=cliente.branch_id
 GROUP BY branch_name
-
--- Mediante índices mejorar la performance la búsqueda de clientes por DNI
-
--- Crear la tabla “movimientos” con los campos de identificación del movimiento, número de cuenta, monto, tipo de operación y hora
-
