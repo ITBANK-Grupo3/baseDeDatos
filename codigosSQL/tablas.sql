@@ -63,6 +63,16 @@ CREATE TABLE IF NOT EXISTS auditoria_cuenta (
 
 -- Crear la tabla “movimientos” con los campos de identificación del movimiento, número de cuenta, monto, tipo de operación y hora
 
---Mediante el uso de transacciones, hacer una transferencia de 1000$desde la cuenta 200 a la cuenta 400
---Registrar el movimiento en la tabla movimientos 
---En caso de no poder realizar la operación de forma completa, realizarun ROLLBACK
+CREATE TABLE 
+IF NOT EXISTS 
+	movimientos(
+		transaction_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+		account_id_emi INTEGER NOT NULL,
+		account_id_rec INTEGER NOT NULL,
+		amount REAL NOT NULL,	
+		type VARCHAR(55) NOT NULL,
+		created_at DATE NOT NULL,
+		FOREIGN KEY(account_id_emi) REFERENCES cuenta(account_id),
+		FOREIGN KEY(account_id_rec) REFERENCES cuenta(account_id)
+	);
+

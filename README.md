@@ -13,11 +13,4 @@
 - Para crear la tabla de direcciones se debe ejecutar direcciones.sql y luego direcciones.py para insertarle las mismas.
 - Para leer el archivo JSON dado y agregar los nuevos clientes a la tabla cliente, ejecutar cargaDatosJSON.py 
 
-<hr>
-Falta: 
 
-- Mediante índices mejorar la performance la búsqueda de clientes por DNI
-- Crear la tabla “movimientos” con los campos de identificación del movimiento, número de cuenta, monto, tipo de operación y hora
-  - Mediante el uso de transacciones, hacer una transferencia de 1000$ desde la cuenta 200 a la cuenta 400
-  - Registrar el movimiento en la tabla movimientos
-  - En caso de no poder realizar la operación de forma completa, realizar un ROLLBACK
